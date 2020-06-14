@@ -1,4 +1,211 @@
-#trying Node-RED basics
-[{"id":"95f0acc3.e026f","type":"tab","label":"Flow 1","disabled":false,"info":""},{"id":"b1b11140.4e4ef","type":"inject","z":"95f0acc3.e026f","name":"","topic":"","payload":"Hello Node-RED!","payloadType":"str","repeat":"","crontab":"","once":false,"x":141,"y":61,"wires":[["9d22d9b6.c94e28"]]},{"id":"f2f2649a.0d0d98","type":"debug","z":"95f0acc3.e026f","name":"","active":true,"console":"false","complete":"false","x":570,"y":60,"wires":[]},{"id":"9d22d9b6.c94e28","type":"function","z":"95f0acc3.e026f","name":"","func":"msg.payload=msg.payload+\"with IBM WATSON\"\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":140,"wires":[["f2f2649a.0d0d98"]]}]
-#checking git push
-[{"id":"95f0acc3.e026f","type":"tab","label":"Flow 1","disabled":false,"info":""},{"id":"b1b11140.4e4ef","type":"inject","z":"95f0acc3.e026f","name":"","topic":"","payload":"Hello this is Node-RED!","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":"","x":161,"y":61,"wires":[["9d22d9b6.c94e28"]]},{"id":"f2f2649a.0d0d98","type":"debug","z":"95f0acc3.e026f","name":"","active":true,"console":"false","complete":"false","x":570,"y":60,"wires":[]},{"id":"9d22d9b6.c94e28","type":"function","z":"95f0acc3.e026f","name":"","func":"msg.payload=msg.payload+\" with IBM WATSON\"\nreturn msg;","outputs":1,"noerr":0,"x":350,"y":140,"wires":[["f2f2649a.0d0d98"]]},{"id":"40b206dc.afeda","type":"watson-conversation-v1","z":"95f0acc3.e026f","name":"","workspaceid":"1f2a81fa-4f46-4ad2-bc80-70815b4d9f41","multiuser":false,"context":true,"empty-payload":false,"service-endpoint":"https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/c5b2d88c-e943-490b-9e8e-af35db7c1730","timeout":"","optout-learning":false,"x":420,"y":380,"wires":[["35bc0fbd.ee8b5","1241bfa7.0822a8"]]},{"id":"338913e1.73369c","type":"ui_form","z":"95f0acc3.e026f","name":"","label":"","group":"8a089ed6.8c2de8","order":0,"width":0,"height":0,"options":[{"label":"Type your msg","value":"text","type":"text","required":true,"rows":null}],"formValue":{"text":""},"payload":"","submit":"submit","cancel":"cancel","topic":"","x":180,"y":280,"wires":[["f4907d23.f1385"]]},{"id":"f4907d23.f1385","type":"function","z":"95f0acc3.e026f","name":"","func":"msg.payload=msg.payload.text;\nreturn msg;","outputs":1,"noerr":0,"x":360,"y":280,"wires":[["40b206dc.afeda","2254634d.945a64"]]},{"id":"35bc0fbd.ee8b5","type":"function","z":"95f0acc3.e026f","name":"","func":"\nreturn msg;","outputs":1,"noerr":0,"x":510,"y":280,"wires":[["a79cb429.46e628"]]},{"id":"2254634d.945a64","type":"ui_text","z":"95f0acc3.e026f","order":0,"width":0,"height":0,"name":"","label":"text","format":"{{msg.payload}}","layout":"row-spread","x":80,"y":420,"wires":[]},{"id":"1241bfa7.0822a8","type":"ui_text_input","z":"95f0acc3.e026f","name":"","label":"","tooltip":"","order":0,"width":0,"height":0,"passthru":true,"mode":"text","delay":300,"topic":"","x":400,"y":500,"wires":[[]]},{"id":"a79cb429.46e628","type":"debug","z":"95f0acc3.e026f","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","x":140,"y":180,"wires":[]},{"id":"8a089ed6.8c2de8","type":"ui_group","z":"","name":"chatbot","tab":"c717b688.bfcf9","order":1,"disp":true,"width":"6","collapse":false},{"id":"c717b688.bfcf9","type":"ui_tab","z":"","name":"test","icon":"dashboard","disabled":false,"hidden":false}]
+[
+    {
+        "id": "95f0acc3.e026f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b1b11140.4e4ef",
+        "type": "inject",
+        "z": "95f0acc3.e026f",
+        "name": "",
+        "topic": "",
+        "payload": "Hello this is Node-RED!",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 161,
+        "y": 61,
+        "wires": [
+            [
+                "9d22d9b6.c94e28"
+            ]
+        ]
+    },
+    {
+        "id": "f2f2649a.0d0d98",
+        "type": "debug",
+        "z": "95f0acc3.e026f",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 570,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9d22d9b6.c94e28",
+        "type": "function",
+        "z": "95f0acc3.e026f",
+        "name": "",
+        "func": "msg.payload=msg.payload+\" with IBM WATSON\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "f2f2649a.0d0d98"
+            ]
+        ]
+    },
+    {
+        "id": "40b206dc.afeda",
+        "type": "watson-conversation-v1",
+        "z": "95f0acc3.e026f",
+        "name": "Tesla CC",
+        "workspaceid": "3b7065dc-84f8-40d8-92c6-164906454a1d",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/c5b2d88c-e943-490b-9e8e-af35db7c1730",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "35bc0fbd.ee8b5"
+            ]
+        ]
+    },
+    {
+        "id": "338913e1.73369c",
+        "type": "ui_form",
+        "z": "95f0acc3.e026f",
+        "name": "",
+        "label": "",
+        "group": "8a089ed6.8c2de8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Type your msg",
+                "value": "text",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "text": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "f4907d23.f1385"
+            ]
+        ]
+    },
+    {
+        "id": "f4907d23.f1385",
+        "type": "function",
+        "z": "95f0acc3.e026f",
+        "name": "Input",
+        "func": "msg.payload=msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "40b206dc.afeda",
+                "2254634d.945a64"
+            ]
+        ]
+    },
+    {
+        "id": "35bc0fbd.ee8b5",
+        "type": "function",
+        "z": "95f0acc3.e026f",
+        "name": "Output",
+        "func": "msg.payload=msg.payload.output.text[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "a79cb429.46e628",
+                "1fc935e.99caa4a"
+            ]
+        ]
+    },
+    {
+        "id": "2254634d.945a64",
+        "type": "ui_text",
+        "z": "95f0acc3.e026f",
+        "group": "8a089ed6.8c2de8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Query - ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 120,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a79cb429.46e628",
+        "type": "debug",
+        "z": "95f0acc3.e026f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 140,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1fc935e.99caa4a",
+        "type": "ui_text",
+        "z": "95f0acc3.e026f",
+        "group": "8a089ed6.8c2de8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 590,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8a089ed6.8c2de8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Tesla Chatbot",
+        "tab": "c717b688.bfcf9",
+        "order": 1,
+        "disp": true,
+        "width": 13,
+        "collapse": false
+    },
+    {
+        "id": "c717b688.bfcf9",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Tesla ",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
